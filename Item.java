@@ -2,13 +2,11 @@ abstract class Item {
   public String id;
   public String name;
   public String description;
-  public boolean useable;
 
-  public Item(String id, String name, String description, boolean useable) {
+  public Item(String id, String name, String description) {
     this.id = id;
     this.name = name;
     this.description = description;
-    this.useable = useable;
   }
 
   abstract void use();
@@ -16,6 +14,6 @@ abstract class Item {
   abstract void drop();
 
   public String getInfo() {
-    return ("[" + name + "]\n" + description);
+    return ("[" + name + "] " + description);
   }
 }

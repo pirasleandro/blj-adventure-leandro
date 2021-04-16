@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import boxdrawing.*;
 
 public class MapArchive {
@@ -9,21 +11,26 @@ public class MapArchive {
   public static final Map TESTING_MAP = new Map(
     new Room[] {
       new Room("starter_room", "Starter Room",
+      new Item[]{
+        new Coin("coin", "Coin", "A shiny coin."),
+        new Coin("coin2", "Coin", "A shiny coin."),
+        new Coin("coin3", "Coin", "A shiny coin.")
+      },
         "┌─────────┐\n" +
         "│         │\n" +
-        "│         " + ASCIIart.verticalDoor(AnsiColors.BLUE) + "\n" +
+        "│         B\n" +
         "│         │\n" +
-        "└───" + ASCIIart.horizontalDoor(AnsiColors.RED) + "───┘"
+        "└───RRR───┘"
       ),
-      new Room("second_room", "Second Room",
+      new Room("second_room", "Second Room", new Item[0],
         "┌─────────┐\n" +
         "│         │\n" +
-        ASCIIart.verticalDoor(AnsiColors.BLUE) + "         │\n" +
+        "B         │\n" +
         "│         │\n" +
-        "└───" + ASCIIart.horizontalDoor(AnsiColors.GREEN) + "───┘"
+        "└───GGG───┘"
       ),
-      new Room("third_room", "Third Room",
-        "┌───" + ASCIIart.horizontalDoor(AnsiColors.RED) + "────────" + ASCIIart.horizontalDoor(AnsiColors.GREEN) + "───┐\n" + 
+      new Room("third_room", "Third Room", new Item[0],
+        "┌───RRR────────GGG───┐\n" + 
         "│                    │\n" +
         "│                    │\n" +
         "│                    │\n" +

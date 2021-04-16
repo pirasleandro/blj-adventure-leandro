@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class ASCIIart {
   private ASCIIart() {
     // static class
@@ -33,5 +35,18 @@ public class ASCIIart {
 
   public static String verticalDoor(String color) {
     return (color + "║" + AnsiColors.RESET);
+  }
+
+  public static void clearConsole() {
+    System.out.print("\033\143");
+  }
+
+  public static void okToContinue() {
+    System.out.println("[ok]> continue");
+    Scanner scan = new Scanner(System.in);
+    String ok = scan.nextLine();
+    while (!ok.equals("ok")) {
+      ok = scan.nextLine();
+    }
   }
 }

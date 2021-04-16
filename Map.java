@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Map {
   public Room[] rooms;
   public Door[] doors;
-  private static final Room DEBUG_ROOM = new Room("debug_room", "Room not found.",
+  private static final Room DEBUG_ROOM = new Room("debug_room", "Room not found.", new Item[0],
     "+------------------+\n" +
     "|  THIS ROOM DOES  |\n" + 
     "|  NOT EXIST       |\n" +
@@ -56,5 +56,9 @@ public class Map {
       }
     }
     return output;
+  }
+
+  public ArrayList<String> getItemsInRoom(String id) {
+    return getRoom(id).getItems();
   }
 }
