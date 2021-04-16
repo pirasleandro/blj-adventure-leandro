@@ -9,7 +9,7 @@ public class Map {
     "|  NOT EXIST       |\n" +
     "+------------------+"
   );
-  private static final Door DEBUG_DOOR = new Door("debug_door", "debug_room", "debug_room");
+  private static final Door DEBUG_DOOR = new Door("debug_door", "Door not found.", "debug_room", "debug_room");
 
   public Map(Room[] rooms, Door[] doors) {
     this.rooms = rooms;
