@@ -1,20 +1,21 @@
-public class Item {
-  String name;
-  String id;
-  String description;
-  boolean useable;
+abstract class Item {
+  public String id;
+  public String name;
+  public String description;
+  public boolean useable;
 
-  public Item(String name, String id, boolean useable) {
-    this.name = name;
+  public Item(String id, String name, String description, boolean useable) {
     this.id = id;
+    this.name = name;
+    this.description = description;
     this.useable = useable;
   }
 
-  public void use() {
-    if (useable) {
-      System.out.println("Nothing happened.");
-    } else {
-      System.out.println("This item can't be used.");
-    }
+  abstract void use();
+  abstract void take();
+  abstract void drop();
+
+  public String getInfo() {
+    return ("[" + name + "]\n" + description);
   }
 }
