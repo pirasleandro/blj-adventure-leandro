@@ -1,15 +1,23 @@
 import java.util.ArrayList;
 
 public class Map {
+  public String id;
   public Room[] rooms;
   public Door[] doors;
+  public Map nextStage;
   private static final Room DEBUG_ROOM = new Room("debug_room", "Room not found.", new Item[0],
     "+------------------+\n" +
     "|  THIS ROOM DOES  |\n" + 
     "|  NOT EXIST       |\n" +
     "+------------------+"
   );
-  private static final Door DEBUG_DOOR = new Door("debug_door", "Door not found.", "debug_room", "debug_room");
+  private static final Door DEBUG_DOOR = new Door("debug_door", "Door not found.", "debug_room", "debug_room", false);
+
+  public Map(Room[] rooms, Door[] doors, Map nextStage) {
+    this.rooms = rooms;
+    this.doors = doors;
+    this.nextStage = nextStage;
+  }
 
   public Map(Room[] rooms, Door[] doors) {
     this.rooms = rooms;
@@ -60,5 +68,9 @@ public class Map {
 
   public ArrayList<String> getItemsInRoom(String id) {
     return getRoom(id).getItems();
+  }
+
+  public String getMapId() {
+    return id;
   }
 }
