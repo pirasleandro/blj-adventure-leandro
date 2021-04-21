@@ -95,12 +95,16 @@ public class Controller {
 
   private void useDoor(String id) {
     Door door = map.getDoor(id);
-    if (door.roomId1 == currentRoomId) {
-      currentRoomId = door.roomId2;
-    } else if (door.roomId2 == currentRoomId) {
-      currentRoomId = door.roomId1;
+    if (!door.isLocked) {
+      if (door.roomId1 == currentRoomId) {
+        currentRoomId = door.roomId2;
+      } else if (door.roomId2 == currentRoomId) {
+        currentRoomId = door.roomId1;
+      } else {
+        System.out.println("The door you want to use is not in your current room.");
+      }
     } else {
-      System.out.println("The door you want to use is not in your current room.");
+      System.out.println("The door is locked.");
     }
   }
 
@@ -122,5 +126,9 @@ public class Controller {
       case "us" -> player.getItem(id).use();
       case "dr" -> player.getItem(id).drop();
     }
+  }
+
+  public String getCurrentRoom() {
+    return currentRoomId;
   }
 }
