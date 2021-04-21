@@ -1,6 +1,8 @@
 public class Coin extends Item {
+
   public Coin(String id, String name, String description) {
     super(id, name, description);
+    //TODO Auto-generated constructor stub
   }
 
   @Override
