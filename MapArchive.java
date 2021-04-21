@@ -38,7 +38,9 @@ public class MapArchive {
       new Room("starter_room", "Entrance", new Item[0],
         ASCIIart.bigRoom("LLL","D01","LLL","D02","|","   ","|","   ","L","D03","|","   ","WWW","E01","WWW","E02")
       ),
-      new Room("hallway_1", "Hallway", new Item[0],
+      new Room("hallway_1", "Hallway", new Item[] {
+          new Weapon("fire_extinguisher", "Fire Extinguisher", "Can be used as a weapon.", 5)
+        },
         ASCIIart.hallwayHorizontal("LLL","D04","LLL","D05","L","D03","|","   ","LLL","D06","LLL","D07")
       ),
       new Room("cafeteria", "Cafeteria", new Item[] {
@@ -50,7 +52,7 @@ public class MapArchive {
         ASCIIart.simpleRoom("LLL", "D06", "|", "   ", "|", "   ", "---", "   ")
       ),
       new Room("office_2", "Office", new Item[] {
-          new Key("key_1", "Key", "Security Room", "hallway_security")
+          new Keycard("key_1", "Key", "Security Room", "hallway_security")
         },
         ASCIIart.simpleRoom("LLL", "D07", "|", "   ", "|", "   ", "---", "   ")
       ),
@@ -63,11 +65,13 @@ public class MapArchive {
       new Room("hallway_2", "Hallway", new Item[0], 
         ASCIIart.hallwayVertical("LLL", "D08", "L", "D09", "L", "D10", "L", "D11", "|", "   ", "LLL", "D01")
       ),
-      new Room("weaponry", "Weaponry", new Item[0],
+      new Room("weaponry", "Weaponry", new Item[] {
+          new Weapon("gun", "Gun", "A simple gun. It's loaded.", 100)
+        },
         ASCIIart.simpleRoom("---", "   ", "|", "   ", "L", "D09", "---", "   ")
       ),
       new Room("security", "Security", new Item[] {
-          new Key("key_2", "Key", "Checkpoint Key", "checkpoint_end")
+          new Keycard("key_2", "Key", "Checkpoint Key", "checkpoint_end")
         },
         ASCIIart.simpleRoom("---", "   ", "L", "D11", "|", "   ", "---", "   ")
       ),
