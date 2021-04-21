@@ -12,29 +12,7 @@ public class Room {
     for (int i = 0; i < items.length; i++) {
       this.items.add(items[i]);
     }
-    this.asciiArt = colorDoors(asciiArt);
-  }
-
-  private String colorDoors(String asciiArt) {
-    asciiArt = asciiArt.replace("RRR", AnsiColors.RED + "═══" + AnsiColors.RESET);
-    asciiArt = asciiArt.replace("R", AnsiColors.RED + "║" + AnsiColors.RESET);
-    asciiArt = asciiArt.replace("YYY", AnsiColors.YELLOW + "═══" + AnsiColors.RESET);
-    asciiArt = asciiArt.replace("Y", AnsiColors.YELLOW + "║" + AnsiColors.RESET);
-    asciiArt = asciiArt.replace("GGG", AnsiColors.GREEN + "═══" + AnsiColors.RESET);
-    asciiArt = asciiArt.replace("G", AnsiColors.GREEN + "║" + AnsiColors.RESET);
-    asciiArt = asciiArt.replace("BBB", AnsiColors.BLUE + "═══" + AnsiColors.RESET);
-    asciiArt = asciiArt.replace("B", AnsiColors.BLUE + "║" + AnsiColors.RESET);
-    asciiArt = asciiArt.replace("PPP", AnsiColors.PURPLE + "═══" + AnsiColors.RESET);
-    asciiArt = asciiArt.replace("P", AnsiColors.PURPLE + "║" + AnsiColors.RESET);
-    asciiArt = asciiArt.replace("CCC", AnsiColors.CYAN + "═══" + AnsiColors.RESET);
-    asciiArt = asciiArt.replace("C", AnsiColors.CYAN + "║" + AnsiColors.RESET);
-    asciiArt = asciiArt.replace("WWW", AnsiColors.WHITE + "═══" + AnsiColors.RESET);
-    asciiArt = asciiArt.replace("W", AnsiColors.WHITE + "║" + AnsiColors.RESET);
-    asciiArt = asciiArt.replace("LLL", AnsiColors.BLACK_BRIGHT + "═══" + AnsiColors.RESET);
-    asciiArt = asciiArt.replace("L", AnsiColors.BLACK_BRIGHT + "║" + AnsiColors.RESET);
-    asciiArt = asciiArt.replace("---", "───");
-    asciiArt = asciiArt.replace("|", "│");
-    return asciiArt;
+    this.asciiArt = ASCIIart.colorDoors(this.asciiArt);
   }
 
   public Item getItem(String id) {
