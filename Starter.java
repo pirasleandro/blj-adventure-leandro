@@ -7,6 +7,8 @@ public class Starter {
     Controller controller = new Controller(map,player,"starter_room");
     do {
       ASCIIart.clearConsole();
+      Item.player = controller.getPlayer();
+      Item.map = controller.getMap();
       controller.printCurrentRoom();
       controller.getInput();
       if (controller.getCurrentRoom() == "end_room") {
