@@ -12,8 +12,12 @@ public class Player {
   }
 
   public void printInventory() {
-    for (Item item : items) {
-      System.out.println("[" + items.indexOf(item) + "]> " + item.getInfo());
+    if (items.size() > 0) {
+      for (Item item : items) {
+        System.out.println("[" + items.indexOf(item) + "]> " + item.getInfo());
+      }
+    } else {
+      System.out.println("There are no items in your inventory.");
     }
   }
 
