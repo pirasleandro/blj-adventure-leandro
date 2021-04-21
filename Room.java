@@ -28,6 +28,12 @@ public class Room {
     asciiArt = asciiArt.replace("P", AnsiColors.PURPLE + "║" + AnsiColors.RESET);
     asciiArt = asciiArt.replace("CCC", AnsiColors.CYAN + "═══" + AnsiColors.RESET);
     asciiArt = asciiArt.replace("C", AnsiColors.CYAN + "║" + AnsiColors.RESET);
+    asciiArt = asciiArt.replace("WWW", AnsiColors.WHITE + "═══" + AnsiColors.RESET);
+    asciiArt = asciiArt.replace("W", AnsiColors.WHITE + "║" + AnsiColors.RESET);
+    asciiArt = asciiArt.replace("LLL", AnsiColors.BLACK_BRIGHT + "═══" + AnsiColors.RESET);
+    asciiArt = asciiArt.replace("L", AnsiColors.BLACK_BRIGHT + "║" + AnsiColors.RESET);
+    asciiArt = asciiArt.replace("---", "───");
+    asciiArt = asciiArt.replace("|", "│");
     return asciiArt;
   }
 
