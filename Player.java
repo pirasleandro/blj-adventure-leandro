@@ -2,7 +2,8 @@ import java.util.ArrayList;
 
 public class Player {
   public String name;
-  public float health = 100;
+  public float maxHealth = 100;
+  private float health = maxHealth;
   public float defense = 20;
   public ArrayList<Item> items = new ArrayList<Item>();
 
@@ -39,6 +40,18 @@ public class Player {
     } else {
       System.out.println("Item not found.");
       return null;
+    }
+  }
+
+  public void removeItem(String id) {
+    items.remove(getItem(id));
+  }
+
+  public void heal(float hp) {
+    if (health + hp > maxHealth) {
+      health = maxHealth;
+    } else {
+      health += hp;
     }
   }
 }
