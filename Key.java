@@ -7,8 +7,12 @@ public class Key extends Item {
   }
 
   @Override
-  void use() {
-    // TODO Auto-generated method stub
+  void use(String currentRoomId) {
+    Door door = map.getDoor(door_id);
+    Room room = map.getRoom(currentRoomId);
+    if (door.roomId1 == room.id || door.roomId2 == room.id) {
+      door.isLocked = !door.isLocked;
+    }
   }
 
   @Override
