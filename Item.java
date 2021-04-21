@@ -1,4 +1,6 @@
 abstract class Item {
+  public static Map map;
+  public static Player player;
   public String id;
   public String name;
   public String description;
@@ -9,7 +11,7 @@ abstract class Item {
     this.description = description;
   }
 
-  abstract void use();
+  abstract void use(String currentRoomId);
   abstract void take();
   abstract void drop();
 

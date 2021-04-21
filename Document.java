@@ -6,7 +6,7 @@ public class Document extends Item {
   }
 
   @Override
-  void use() {
+  void use(String currentRoomId) {
     // TODO Auto-generated method stub
     
   }

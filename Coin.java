@@ -6,7 +6,7 @@ public class Coin extends Item {
   }
 
   @Override
-  void use() {
+  void use(String currentRoomId) {
     ASCIIart.clearConsole();
     System.out.println("This item can't be used.");
     ASCIIart.okToContinue();
