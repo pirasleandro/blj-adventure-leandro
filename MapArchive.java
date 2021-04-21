@@ -41,13 +41,17 @@ public class MapArchive {
       new Room("hallway_1", "Hallway", new Item[0],
         ASCIIart.hallwayHorizontal("LLL","D04","LLL","D05","L","D03","|","   ","LLL","D06","LLL","D07")
       ),
-      new Room("cafeteria", "Cafeteria", new Item[0],
+      new Room("cafeteria", "Cafeteria", new Item[] {
+          new Food("pizza", "Pizza", "A slice of pizza. Restores some health.", 20)
+        },
         ASCIIart.bigRoom("---", "   ", "---", "   ", "|", "   ", "|", "   ", "|", "   ", "|", "   ", "LLL", "D04", "LLL", "D05")
       ),
       new Room("office_1", "Office", new Item[0],
         ASCIIart.simpleRoom("LLL", "D06", "|", "   ", "|", "   ", "---", "   ")
       ),
-      new Room("office_2", "Office", new Item[0],
+      new Room("office_2", "Office", new Item[] {
+          new Key("key_1", "Key", "Security Room", "hallway_security")
+        },
         ASCIIart.simpleRoom("LLL", "D07", "|", "   ", "|", "   ", "---", "   ")
       ),
       new Room("office_3", "Office", new Item[0],
@@ -62,7 +66,9 @@ public class MapArchive {
       new Room("weaponry", "Weaponry", new Item[0],
         ASCIIart.simpleRoom("---", "   ", "|", "   ", "L", "D09", "---", "   ")
       ),
-      new Room("security", "Security", new Item[0],
+      new Room("security", "Security", new Item[] {
+          new Key("key_2", "Key", "Checkpoint Key", "checkpoint_end")
+        },
         ASCIIart.simpleRoom("---", "   ", "L", "D11", "|", "   ", "---", "   ")
       ),
       new Room("checkpoint", "Checkpoint", new Item[0],
