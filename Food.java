@@ -13,12 +13,15 @@ public class Food extends Item {
 
   @Override
   void take() {
-    System.out.println("You dropped " + name);
+    ASCIIart.clearConsole();
+    System.out.println("You took " + name);
+    ASCIIart.okToContinue();
   }
 
   @Override
   void drop() {
+    ASCIIart.clearConsole();
     System.out.println("You dropped " + name);
+    ASCIIart.okToContinue();
   }
-  
 }

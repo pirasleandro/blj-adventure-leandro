@@ -12,7 +12,7 @@ public class Room {
     for (int i = 0; i < items.length; i++) {
       this.items.add(items[i]);
     }
-    this.asciiArt = ASCIIart.colorDoors(this.asciiArt);
+    this.asciiArt = ASCIIart.colorDoors(asciiArt);
   }
 
   public Item getItem(String id) {
