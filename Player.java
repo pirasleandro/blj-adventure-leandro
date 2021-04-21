@@ -54,4 +54,16 @@ public class Player {
       health += hp;
     }
   }
+
+  public void hurt(float hp) {
+    if (health - hp < 0) {
+      kill();
+    } else {
+      health -= hp;
+    }
+  }
+
+  public void kill() {
+    health = 0;
+  }
 }
