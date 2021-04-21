@@ -37,15 +37,19 @@ public class Controller {
     for (int i = 0; i < awailableDoors.size(); i++) {
       System.out.println("[" + i + "]> " + map.getDoor(awailableDoors.get(i)).name);
     }
-    System.out.println("[" + awailableDoors.size() + "]> cancel");
-    int input = 0;
-    try {
-      input = Integer.parseInt(scan.nextLine());
-      if (input != awailableDoors.size()) {
-        useDoor(awailableDoors.get(input));
+    if (awailableDoors.size() > 1) {
+      System.out.println("[" + awailableDoors.size() + "]> cancel");
+      int input = 0;
+      try {
+        input = Integer.parseInt(scan.nextLine());
+        if (input != awailableDoors.size()) {
+          useDoor(awailableDoors.get(input));
+        }
+      } catch (Exception e) {
+        System.out.println("Incorrect input. Try again.");
       }
-    } catch (Exception e) {
-      System.out.println("Incorrect input. Try again.");
+    } else {
+      useDoor(awailableDoors.get(0));
     }
   }
 
