@@ -1,26 +1,22 @@
 public class Coin extends Item {
 
+  // temp class used to debug
   public Coin(String id, String name, String description) {
     super(id, name, description);
-    //TODO Auto-generated constructor stub
   }
 
   @Override
   void use(String currentRoomId) {
-    ASCIIart.clearConsole();
-    System.out.println("This item can't be used.");
-    ASCIIart.okToContinue();
+    ConsoleUtil.cToClose("This item can't be used.");
   }
 
   @Override
   void take() {
-    ASCIIart.clearConsole();
-    System.out.println("You picked up a coin.");
-    ASCIIart.okToContinue();
+    ConsoleUtil.cToClose("You picked up a coin.");
   }
 
   @Override
   void drop() {
-    System.out.println("You dropped the coin.");
+    ConsoleUtil.cToClose("You dropped the coin.");
   }
 }
