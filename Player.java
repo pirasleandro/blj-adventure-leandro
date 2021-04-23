@@ -78,4 +78,8 @@ public class Player {
   public int getMaxHealth() {
     return maxHealth;
   }
+
+  public int itemCount() {
+    return items.size();
+  }
 }
