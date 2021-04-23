@@ -7,36 +7,52 @@ public class Debug {
     // static class
   }
 
-  public static void open() {
+  public static void enterCommand() {
     System.out.println("Enter command: ");
     String input = scan.nextLine();
     switch (input) {
       case "tp" -> {
-        System.out.println("Enter room id: ");
-        Ref.controller.setCurrentRoom(scan.nextLine());
+        tp();
       }
       case "open" -> {
-        System.out.println("Enter door id:");
-        Ref.getDoor(scan.nextLine()).isLocked = false;
+        open();
       }
       case "heal" -> {
-        System.out.println("Enter amount: ");
-        input = scan.nextLine();
-        if (input.equals("max")) {
-          Ref.player.heal(Ref.player.maxHealth);
-        } else {
-          Ref.player.heal(Integer.parseInt(input));
-        }
+        heal();
       }
       case "hurt" -> {
-        System.out.println("Enter amount: ");
-        input = scan.nextLine();
-        if (input.equals("max")) {
-          Ref.player.kill();
-        } else {
-          Ref.player.hurt(Integer.parseInt(input));
-        }
+        hurt();
       }
     }
+  }
+
+  private static void tp() {
+    System.out.println("Enter room id: ");
+    Ref.controller.setCurrentRoom(scan.nextLine());
+  }
+
+  private static void open() {
+    System.out.println("Enter door id:");
+    Ref.getDoor(scan.nextLine()).isLocked = false;
+  }
+
+  private static void heal() {
+    System.out.println("Enter amount: ");
+    String input = scan.nextLine();
+    if (input.equals("max")) {
+      Ref.player.heal(Ref.player.maxHealth);
+    } else {
+      Ref.player.heal(Integer.parseInt(input));
+    }
+  }
+
+  private static void hurt() {
+    System.out.println("Enter amount: ");
+      String input = scan.nextLine();
+      if (input.equals("max")) {
+        Ref.player.kill();
+      } else {
+        Ref.player.hurt(Integer.parseInt(input));
+      }
   }
 }
