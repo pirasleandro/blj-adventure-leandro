@@ -33,6 +33,15 @@ public class MapArchive {
     }
   );
 
+  public static final Map LIGHT_CONTAINMENT = new Map(
+    new Room[] {
+      new Room("starter_room", "Checkpoint", new Item[0], ASCIIart.bigRoom(AnsiColors.BLACK_BRIGHT, "---", "   ", "---", "   ", "|", "   ", "|", "   ", "|", "   ", "|", "   ", "---", "   ", "---", "   "))
+    },
+    new Door[] {
+
+    }
+  );
+
   public static final Map ENTRANCE_ZONE = new Map(
     new Room[] {
       new Room("starter_room", "Entrance", new Item[0],
@@ -71,7 +80,7 @@ public class MapArchive {
         ASCIIart.simpleRoom("---", "   ", "|", "   ", "L", "D09", "---", "   ")
       ),
       new Room("security", "Security", new Item[] {
-          new Keycard("key_2", "Key", "Checkpoint Key", "checkpoint_end")
+          new Keycard("key_2", "Key", "Checkpoint Key", "checkpoint_end", "checkpoint_end_2")
         },
         ASCIIart.simpleRoom("---", "   ", "L", "D11", "|", "   ", "---", "   ")
       ),
@@ -94,19 +103,11 @@ public class MapArchive {
       new Door("hallway_weaponry", "D09", "hallway_2", "weaponry", false),
       new Door("hallway_office_3", "D10", "hallway_2", "office_3", false),
       new Door("hallway_security", "D11", "hallway_2", "security", true),
-      new Door("checkpoint_end", "E03", "checkpoint", "end_room", true)
+      new Door("checkpoint_end_1", "E03", "checkpoint", "end_room", true),
+      new Door("checkpoint_end_2", "E04", "checkpoint", "end_room", true),
+      new Door("start_start_1", "E01", "starter_room", "start_room", true),
+      new Door("start_start_2", "E02", "starter_room", "start_room", true)
     },
     MapArchive.LIGHT_CONTAINMENT
-  );
-
-  public static final Map LIGHT_CONTAINMENT = new Map(
-    new Room[] {
-      new Room("checkpoint", "Checkpoint", new Item[0],
-        ASCIIart.bigRoom("WWW", "E03", "WWW", "E04", "|", "   ", "|", "   ", "|", "   ", "|", "   ", "---", "   ", "---", "   ")
-      )
-    },
-    new Door[] {
-
-    }
   );
 }
