@@ -16,7 +16,7 @@ public class ConsoleUtil {
     while (!ok.equals("c")) {
       ok = scan.nextLine();
     }
-    scan.close();
+    ;
   }
 
   public static void cToClose(String message) {
