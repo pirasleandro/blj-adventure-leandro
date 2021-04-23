@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 public class ConsoleUtil {
+  private static Scanner scan = new Scanner(System.in);
+
   private ConsoleUtil() {
     // static class
   }
@@ -11,7 +13,6 @@ public class ConsoleUtil {
 
   public static void cToClose() {
     System.out.println("[c]> close");
-    Scanner scan = new Scanner(System.in);
     String ok = scan.nextLine();
     while (!ok.equals("c")) {
       ok = scan.nextLine();

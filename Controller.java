@@ -5,6 +5,7 @@ public class Controller {
   private Map map;
   private Player player;
   private String currentRoomId;
+  private static Scanner scan = new Scanner(System.in);
 
   public Controller(Map map, Player player, String starterRoomId) {
     this.map = map;
@@ -18,7 +19,6 @@ public class Controller {
   }
 
   public void getInput() {
-    Scanner scan = new Scanner(System.in);
     System.out.println("[0]> leave room");
     System.out.println("[1]> inspect room");
     System.out.println("[2]> show inventory");
@@ -35,7 +35,6 @@ public class Controller {
   private void leaveRoom() {
     ConsoleUtil.clear();
     printCurrentRoom();
-    Scanner scan = new Scanner(System.in);
     ArrayList<String> awailableDoors = map.getDoorsOfRoom(currentRoomId);
     for (int i = 0; i < awailableDoors.size(); i++) {
       System.out.println("[" + i + "]> " + map.getDoor(awailableDoors.get(i)).name);
@@ -77,7 +76,6 @@ public class Controller {
       System.out.println("There are no items in this room");
       System.out.println("[c]> close");
     }
-    Scanner scan = new Scanner(System.in);
     int input = 0;
     try {
       input = Integer.parseInt(scan.nextLine());
@@ -97,7 +95,6 @@ public class Controller {
     player.printInventory();
     if (player.itemCount() > 0) {
       System.out.println("[c]> close");
-      Scanner scan = new Scanner(System.in);
       String input = scan.nextLine();
       if (input != "c") {
         try {
@@ -140,7 +137,6 @@ public class Controller {
     System.out.println("[u]> use");
     System.out.println("[d]> drop");
     System.out.println("[c]> close");
-    Scanner scan = new Scanner(System.in);
     String input = scan.nextLine();
     switch (input) {
       case "us" -> useItem(id);

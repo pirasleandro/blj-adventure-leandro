@@ -2,13 +2,13 @@ import java.util.Scanner;
 
 public class Debug {
   public static Controller controller;
+  private static Scanner scan = new Scanner(System.in);
 
   private Debug() {
     // static class
   }
 
   public static void open() {
-    Scanner scan = new Scanner(System.in);
     System.out.println("Enter command: ");
     String input = scan.nextLine();
     switch (input) {
