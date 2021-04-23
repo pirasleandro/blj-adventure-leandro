@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Map {
   public String id;
@@ -24,11 +25,18 @@ public class Map {
     this.doors = doors;
   }
 
+  public Map(Map map) {
+    this.id = map.id;
+    this.rooms = map.rooms;
+    this.doors = map.doors;
+    this.nextStage = map.nextStage;
+  }
+
   public Room getRoom(String id) {
     Room output = null;
     boolean roomFound = false;
     for (Room room : rooms) {
-      if (room.id == id) {
+      if (room.id.equals(id)) {
         output = room;
         roomFound = true;
       }
@@ -44,7 +52,7 @@ public class Map {
     Door output = null;
     boolean doorFound = false;
     for (Door door : doors) {
-      if (door.id == id) {
+      if (door.id.equals(id)) {
         output = door;
         doorFound = true;
       }
@@ -59,7 +67,7 @@ public class Map {
   public ArrayList<String> getDoorsOfRoom(String id) {
     ArrayList<String> output = new ArrayList<String>();
     for (Door door : doors) {
-      if (door.roomId1 == id || door.roomId2 == id) {
+      if (door.roomId1.equals(id) || door.roomId2.equals(id)) {
         output.add(door.id);
       }
     }
