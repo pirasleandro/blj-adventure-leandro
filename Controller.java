@@ -29,12 +29,11 @@ public class Controller {
       case "2" -> showInventory();
       case "/" -> Debug.open();
     }
-    scan.close();
+    ;
   }
 
   private void leaveRoom() {
     ConsoleUtil.clear();
-    
     printCurrentRoom();
     Scanner scan = new Scanner(System.in);
     ArrayList<String> awailableDoors = map.getDoorsOfRoom(currentRoomId);
@@ -52,6 +51,7 @@ public class Controller {
       } catch (Exception e) {
         System.out.println("Incorrect input. Try again.");
       }
+      
     } else if (awailableDoors.size() > 0) {
       useDoor(awailableDoors.get(0));
     } else {
@@ -60,7 +60,7 @@ public class Controller {
       System.out.println("This room has no doors.");
       ConsoleUtil.cToClose();
     }
-    scan.close();
+    ;
   }
 
   private void inspectRoom() {
@@ -87,7 +87,7 @@ public class Controller {
     } catch (Exception e) {
       System.out.println("Incorrect input. Try again.");
     }
-    scan.close();
+    ;
   }
 
   private void showInventory() {
@@ -107,7 +107,7 @@ public class Controller {
           ConsoleUtil.cToClose("Incorrect input. Try again.");
         }
       }
-      scan.close();
+      ;
     } else {
       ConsoleUtil.cToClose();
     }
@@ -146,7 +146,7 @@ public class Controller {
       case "us" -> useItem(id);
       case "dr" -> dropItem(id);
     }
-    scan.close();
+    ;
   }
 
   private void useItem(String id) {
