@@ -26,9 +26,9 @@ public class Controller {
   private void leaveRoom() {
     ConsoleUI.clear();
     ConsoleUI.printMainUI();
-    ArrayList<String> awailableDoors = Ref.map.getDoorsOfRoom(currentRoomId);
+    ArrayList<String> awailableDoors = Ref.map.getIdsOfDoorsOfRoom(currentRoomId);
     for (int i = 0; i < awailableDoors.size(); i++) {
-      System.out.println("[" + i + "]> " + Ref.map.getDoor(awailableDoors.get(i)).name);
+      System.out.println("[" + i + "]> " + Ref.getDoor(awailableDoors.get(i)).name);
     }
     if (awailableDoors.size() > 1) {
       System.out.println("[c]> close");
@@ -56,7 +56,7 @@ public class Controller {
   private void inspectRoom() {
     ConsoleUI.clear();
     ConsoleUI.printMainUI();
-    Room room = Ref.map.getRoom(currentRoomId);
+    Room room = Ref.getRoom(currentRoomId);
     ArrayList<String> items = room.getItems();
     for (String string : items) {
       System.out.println("[" + items.indexOf(string) + "]> " + room.getItem(string).getInfo());
@@ -102,7 +102,7 @@ public class Controller {
   }
 
   private void useDoor(String id) {
-    Door door = Ref.map.getDoor(id);
+    Door door = Ref.getDoor(id);
     if (door.isLocked) {
       ConsoleUI.clear();
       ConsoleUI.printMainUI();
@@ -120,9 +120,9 @@ public class Controller {
   }
 
   private void takeItem(String id) {
-    Ref.map.getRoom(currentRoomId).getItem(id).take();
-    Ref.player.items.add(Ref.map.getRoom(currentRoomId).getItem(id));
-    Ref.map.getRoom(currentRoomId).items.remove(Ref.map.getRoom(currentRoomId).getItem(id));
+    Ref.getRoom(currentRoomId).getItem(id).take();
+    Ref.player.items.add(Ref.getRoom(currentRoomId).getItem(id));
+    Ref.getRoom(currentRoomId).items.remove(Ref.getRoom(currentRoomId).getItem(id));
   }
 
   private void selectItem(String id) {
@@ -145,11 +145,11 @@ public class Controller {
 
   private void dropItem(String id) {
     Ref.player.getItem(id).drop();
-    Ref.map.getRoom(currentRoomId).items.add(Ref.player.getItem(id));
+    Ref.getRoom(currentRoomId).items.add(Ref.player.getItem(id));
     Ref.player.removeItem(id);
   }
 
-  public String getCurrentRoom() {
+  public String getCurrentRoomId() {
     return currentRoomId;
   }
 

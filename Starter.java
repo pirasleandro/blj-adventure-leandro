@@ -10,7 +10,7 @@ public class Starter {
       ConsoleUI.clear();
       ConsoleUI.printMainUI();
       controller.getInput();
-      if (controller.getCurrentRoom().equals("end_room")) {
+      if (controller.currentRoomId.equals("end_room")) {
         try {
           map = map.nextStage;
           controller.setCurrentRoom("spawn_room");

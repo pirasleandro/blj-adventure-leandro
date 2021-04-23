@@ -17,7 +17,11 @@ public class Ref {
     return map.getRoom(id);
   }
 
-  public static String currentRoomId() {
+  public static Room getRoom() {
+    return map.getRoom(getCurrentRoomId());
+  }
+
+  public static String getCurrentRoomId() {
     return controller.getCurrentRoomId();
   }
 

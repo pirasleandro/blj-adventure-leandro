@@ -28,6 +28,6 @@ public class ConsoleUI {
 
   public static void printMainUI() {
     Ref.player.printHealthbar();
-    Ref.map.getRoom(Ref.controller.getCurrentRoom()).print();
+    Ref.getRoom(Ref.controller.currentRoomId).print();
   }
 }

@@ -67,7 +67,7 @@ public class Map {
     }
   }
 
-  public ArrayList<String> getDoorsOfRoom(String id) {
+  public ArrayList<String> getIdsOfDoorsOfRoom(String id) {
     ArrayList<String> output = new ArrayList<String>();
     for (Door door : doors) {
       if (door.roomId1.equals(id) || door.roomId2.equals(id)) {
@@ -77,7 +77,7 @@ public class Map {
     return output;
   }
 
-  public ArrayList<String> getItemsInRoom(String id) {
+  public ArrayList<String> getIdsOfItemsInRoom(String id) {
     return getRoom(id).getItems();
   }
 

@@ -17,7 +17,7 @@ public class Debug {
       }
       case "open" -> {
         System.out.println("Enter door id:");
-        Ref.map.getDoor(scan.nextLine()).isLocked = false;
+        Ref.getDoor(scan.nextLine()).isLocked = false;
       }
       case "heal" -> {
         System.out.println("Enter amount: ");

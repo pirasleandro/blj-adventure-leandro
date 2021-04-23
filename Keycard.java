@@ -9,8 +9,8 @@ public class Keycard extends Item {
   @Override
   void use(String currentRoomId) {
     for (int i = 0; i < door_id.length; i++) {
-      Door door = Ref.map.getDoor(door_id[i]);
-      Room room = Ref.map.getRoom(currentRoomId);
+      Door door = Ref.getDoor(door_id[i]);
+      Room room = Ref.getRoom(currentRoomId);
       if (door.roomId1 == room.id || door.roomId2 == room.id) {
         door.isLocked = !door.isLocked;
       }
@@ -19,7 +19,7 @@ public class Keycard extends Item {
 
   @Override
   void use() {
-    use(Ref.controller.getCurrentRoom());
+    use(Ref.controller.currentRoomId);
   }
 
   @Override
