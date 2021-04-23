@@ -32,7 +32,7 @@ public class Room {
     }
   }
 
-  public ArrayList<String> getItems() {
+  public ArrayList<String> getIdsOfItems() {
     ArrayList<String> output = new ArrayList<String>();
     for (Item item : items) {
       output.add(item.id);

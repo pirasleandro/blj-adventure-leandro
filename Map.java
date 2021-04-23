@@ -78,7 +78,7 @@ public class Map {
   }
 
   public ArrayList<String> getIdsOfItemsInRoom(String id) {
-    return getRoom(id).getItems();
+    return getRoom(id).getIdsOfItems();
   }
 
   public String getMapId() {

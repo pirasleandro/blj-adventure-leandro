@@ -18,7 +18,7 @@ public class Controller {
       case "l" -> leaveRoom();
       case "i" -> inspectRoom();
       case "s" -> showInventory();
-      case "/" -> Debug.open();
+      case "/" -> Debug.enterCommand();
     }
     ;
   }
@@ -28,7 +28,7 @@ public class Controller {
     ConsoleUI.printMainUI();
     ArrayList<String> awailableDoors = Ref.map.getIdsOfDoorsOfRoom(currentRoomId);
     for (int i = 0; i < awailableDoors.size(); i++) {
-      System.out.println("[" + i + "]> " + Ref.getDoor(awailableDoors.get(i)).name);
+      System.out.println("[" + i + "]> " + Ref.getDoor(awailableDoors.get(i)).description);
     }
     if (awailableDoors.size() > 1) {
       System.out.println("[c]> close");
@@ -57,7 +57,7 @@ public class Controller {
     ConsoleUI.clear();
     ConsoleUI.printMainUI();
     Room room = Ref.getRoom(currentRoomId);
-    ArrayList<String> items = room.getItems();
+    ArrayList<String> items = room.getIdsOfItems();
     for (String string : items) {
       System.out.println("[" + items.indexOf(string) + "]> " + room.getItem(string).getInfo());
     }

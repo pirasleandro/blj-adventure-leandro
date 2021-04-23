@@ -1,7 +1,7 @@
 public class Weapon extends Item {
-  public float damage;
+  public int damage;
 
-  public Weapon(String id, String name, String description, float damage) {
+  public Weapon(String id, String name, String description, int damage) {
     super(id, name, description);
     this.damage = damage;
   }

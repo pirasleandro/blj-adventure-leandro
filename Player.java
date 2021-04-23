@@ -4,7 +4,7 @@ public class Player {
   public String name;
   public int maxHealth = 20;
   private int health = maxHealth;
-  public float defense = 5;
+  public int defense = 5;
   public ArrayList<Item> items = new ArrayList<Item>();
 
   public Player(String name) {
@@ -51,7 +51,7 @@ public class Player {
     items.remove(getItem(id));
   }
 
-  public void heal(float hp) {
+  public void heal(int hp) {
     if (health + hp > maxHealth) {
       health = maxHealth;
     } else {
@@ -59,7 +59,7 @@ public class Player {
     }
   }
 
-  public void hurt(float hp) {
+  public void hurt(int hp) {
     if (health - hp < 0) {
       kill();
     } else {
@@ -70,6 +70,10 @@ public class Player {
   public void kill() {
     health = 0;
   }
+  
+  public void printHealthbar() {
+    ASCIIart.printBar(health, maxHealth, AnsiColors.RED, AnsiColors.BLACK_BRIGHT);
+  }
 
   public int getHealth() {
     return health;
@@ -77,10 +81,6 @@ public class Player {
 
   public int getMaxHealth() {
     return maxHealth;
-  }
-
-  public void printHealthbar() {
-    ASCIIart.printBar(health, maxHealth, AnsiColors.RED, AnsiColors.BLACK_BRIGHT);
   }
 
   public int itemCount() {

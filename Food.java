@@ -1,7 +1,7 @@
 public class Food extends Item {
-  public float heal;
+  public int heal;
 
-  public Food(String id, String name, String description, float heal) {
+  public Food(String id, String name, String description, int heal) {
     super(id, name, description);
     this.heal = heal;
   }

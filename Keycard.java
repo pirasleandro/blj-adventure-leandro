@@ -1,15 +1,15 @@
 public class Keycard extends Item {
-  public String[] door_id;
+  public String[] doorIds;
 
   public Keycard(String id, String name, String description, String... door_id) {
     super(id, name, description);
-    this.door_id = door_id;
+    this.doorIds = door_id;
   }
 
   @Override
   void use(String currentRoomId) {
-    for (int i = 0; i < door_id.length; i++) {
-      Door door = Ref.getDoor(door_id[i]);
+    for (int i = 0; i < doorIds.length; i++) {
+      Door door = Ref.getDoor(doorIds[i]);
       Room room = Ref.getRoom(currentRoomId);
       if (door.roomId1 == room.id || door.roomId2 == room.id) {
         door.isLocked = !door.isLocked;
