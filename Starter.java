@@ -7,15 +7,15 @@ public class Starter {
     Controller controller = new Controller("spawn_room");
     Ref.setRefs(map, controller, player);
     do {
-      ConsoleUtil.clear();
-      controller.printCurrentRoom();
+      ConsoleUI.clear();
+      ConsoleUI.printMainUI();
       controller.getInput();
       if (controller.getCurrentRoom().equals("end_room")) {
         try {
           map = map.nextStage;
           controller.setCurrentRoom("spawn_room");
         } catch(Exception e) {
-          ConsoleUtil.cToClose("No next stage found.");
+          ConsoleUI.cToClose("No next stage found.");
           gameOver = true;
         }
       }

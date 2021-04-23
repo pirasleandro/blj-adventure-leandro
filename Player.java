@@ -79,6 +79,10 @@ public class Player {
     return maxHealth;
   }
 
+  public void printHealthbar() {
+    ASCIIart.printBar(health, maxHealth, AnsiColors.RED, AnsiColors.BLACK_BRIGHT);
+  }
+
   public int itemCount() {
     return items.size();
   }

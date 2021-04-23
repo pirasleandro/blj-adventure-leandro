@@ -18,11 +18,11 @@ public class Food extends Item {
 
   @Override
   void take() {
-    ConsoleUtil.cToClose("You took " + name);
+    ConsoleUI.cToClose("You took " + name);
   }
 
   @Override
   void drop() {
-    ConsoleUtil.cToClose("You dropped " + name);
+    ConsoleUI.cToClose("You dropped " + name);
   }
 }

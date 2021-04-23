@@ -97,10 +97,10 @@ public class ASCIIart {
     return bigRoom(AnsiColors.WHITE, up, upDesc, up2, upDesc2, left, leftDesc, left2, leftDesc2, right, rightDesc, right2, rightDesc2, down, downDesc, down2, downDesc2);
   }
 
-  public static void printHealth(int current, int max) {
+  public static void printBar(int current, int max, String filledColor, String emptyColor) {
     System.out.println("[Health: " + current + "/" + max + "]");
-    String filled = AnsiColors.RED + Block.f + AnsiColors.RESET;
-    String empty = AnsiColors.BLACK_BRIGHT + Block.f + AnsiColors.RESET;
+    String filled = filledColor + Block.f + AnsiColors.RESET;
+    String empty = emptyColor + Block.f + AnsiColors.RESET;
     if (current == max) {
       System.out.println(Box.repeat(filled, max));
     } else if (current > 0) {

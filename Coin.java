@@ -7,21 +7,21 @@ public class Coin extends Item {
 
   @Override
   void use(String currentRoomId) {
-    ConsoleUtil.cToClose("This item can't be used.");
+    ConsoleUI.cToClose("This item can't be used.");
   }
 
   @Override
   void use() {
-    ConsoleUtil.cToClose("This item can't be used.");
+    ConsoleUI.cToClose("This item can't be used.");
   }
 
   @Override
   void take() {
-    ConsoleUtil.cToClose("You picked up a coin.");
+    ConsoleUI.cToClose("You picked up a coin.");
   }
 
   @Override
   void drop() {
-    ConsoleUtil.cToClose("You dropped the coin.");
+    ConsoleUI.cToClose("You dropped the coin.");
   }
 }

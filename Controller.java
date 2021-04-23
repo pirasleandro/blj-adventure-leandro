@@ -9,11 +9,6 @@ public class Controller {
     this.currentRoomId = spawnerRoomId;
   }
 
-  public void printCurrentRoom() {
-    ASCIIart.printHealth(Ref.player.getHealth(), Ref.player.getMaxHealth());
-    Ref.map.getRoom(currentRoomId).print();
-  }
-
   public void getInput() {
     System.out.println("[l]> leave room");
     System.out.println("[i]> inspect room");
@@ -29,8 +24,8 @@ public class Controller {
   }
 
   private void leaveRoom() {
-    ConsoleUtil.clear();
-    printCurrentRoom();
+    ConsoleUI.clear();
+    ConsoleUI.printMainUI();
     ArrayList<String> awailableDoors = Ref.map.getDoorsOfRoom(currentRoomId);
     for (int i = 0; i < awailableDoors.size(); i++) {
       System.out.println("[" + i + "]> " + Ref.map.getDoor(awailableDoors.get(i)).name);
@@ -50,17 +45,17 @@ public class Controller {
     } else if (awailableDoors.size() > 0) {
       useDoor(awailableDoors.get(0));
     } else {
-      ConsoleUtil.clear();
-      printCurrentRoom();
+      ConsoleUI.clear();
+      ConsoleUI.printMainUI();
       System.out.println("This room has no doors.");
-      ConsoleUtil.cToClose();
+      ConsoleUI.cToClose();
     }
     ;
   }
 
   private void inspectRoom() {
-    ConsoleUtil.clear();
-    printCurrentRoom();
+    ConsoleUI.clear();
+    ConsoleUI.printMainUI();
     Room room = Ref.map.getRoom(currentRoomId);
     ArrayList<String> items = room.getItems();
     for (String string : items) {
@@ -85,8 +80,8 @@ public class Controller {
   }
 
   private void showInventory() {
-    ConsoleUtil.clear();
-    printCurrentRoom();
+    ConsoleUI.clear();
+    ConsoleUI.printMainUI();
     ArrayList<Item> items = Ref.player.items;
     Ref.player.printInventory();
     if (Ref.player.itemCount() > 0) {
@@ -97,19 +92,22 @@ public class Controller {
         int input2 = Integer.parseInt(input);
         selectItem(items.get(input2).id);
         } catch (Exception e) {
-          ConsoleUtil.cToClose("Incorrect input. Try again.");
+          ConsoleUI.cToClose("Incorrect input. Try again.");
         }
       }
       ;
     } else {
-      ConsoleUtil.cToClose();
+      ConsoleUI.cToClose();
     }
   }
 
   private void useDoor(String id) {
     Door door = Ref.map.getDoor(id);
     if (door.isLocked) {
-      ConsoleUtil.cToClose("The door is locked.");
+      ConsoleUI.clear();
+      ConsoleUI.printMainUI();
+      System.out.println("The door is locked.");
+      ConsoleUI.cToClose();
     } else {
       if (door.roomId1.equals(currentRoomId)) {
         currentRoomId = door.roomId2;
@@ -128,7 +126,7 @@ public class Controller {
   }
 
   private void selectItem(String id) {
-    ConsoleUtil.clear();
+    ConsoleUI.clear();
     Ref.player.printInventory(id);
     System.out.println("[u]> use");
     System.out.println("[d]> drop");

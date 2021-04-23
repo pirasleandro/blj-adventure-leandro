@@ -25,3 +25,9 @@ public class ConsoleUI {
     System.out.println(message);
     cToClose();
   }
+
+  public static void printMainUI() {
+    Ref.player.printHealthbar();
+    Ref.map.getRoom(Ref.controller.getCurrentRoom()).print();
+  }
+}
