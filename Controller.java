@@ -29,10 +29,11 @@ public class Controller {
       case "2" -> showInventory();
       case "/" -> Debug.open();
     }
+    scan.close();
   }
 
   private void leaveRoom() {
-    ASCIIart.clearConsole();
+    ConsoleUtil.clear();
     
     printCurrentRoom();
     Scanner scan = new Scanner(System.in);
@@ -51,13 +52,19 @@ public class Controller {
       } catch (Exception e) {
         System.out.println("Incorrect input. Try again.");
       }
-    } else {
+    } else if (awailableDoors.size() > 0) {
       useDoor(awailableDoors.get(0));
+    } else {
+      ConsoleUtil.clear();
+      printCurrentRoom();
+      System.out.println("This room has no doors.");
+      ConsoleUtil.cToClose();
     }
+    scan.close();
   }
 
   private void inspectRoom() {
-    ASCIIart.clearConsole();
+    ConsoleUtil.clear();
     printCurrentRoom();
     Room room = map.getRoom(currentRoomId);
     ArrayList<String> items = room.getItems();
@@ -68,7 +75,7 @@ public class Controller {
       System.out.println("[" + items.size() + "]> close");
     } else {
       System.out.println("There are no items in this room");
-      System.out.println("[ok]> close");
+      System.out.println("[c]> close");
     }
     Scanner scan = new Scanner(System.in);
     int input = 0;
@@ -80,32 +87,36 @@ public class Controller {
     } catch (Exception e) {
       System.out.println("Incorrect input. Try again.");
     }
+    scan.close();
   }
 
   private void showInventory() {
-    ASCIIart.clearConsole();
+    ConsoleUtil.clear();
+    printCurrentRoom();
     ArrayList<Item> items = player.items;
     player.printInventory();
-    System.out.println("[" + items.size() + "]> close");
-    Scanner scan = new Scanner(System.in);
-    boolean repeat = false;
-    int input = 0;
-    try {
-      input = Integer.parseInt(scan.nextLine());
-      if (input != items.size()) {
-        selectItem(items.get(input).id);
+    if (player.itemCount() > 0) {
+      System.out.println("[c]> close");
+      Scanner scan = new Scanner(System.in);
+      String input = scan.nextLine();
+      if (input != "c") {
+        try {
+        int input2 = Integer.parseInt(input);
+        selectItem(items.get(input2).id);
+        } catch (Exception e) {
+          ConsoleUtil.cToClose("Incorrect input. Try again.");
+        }
       }
-    } catch (Exception e) {
-      System.out.println("Incorrect input. Try again.");
+      scan.close();
+    } else {
+      ConsoleUtil.cToClose();
     }
   }
 
   private void useDoor(String id) {
     Door door = map.getDoor(id);
     if (door.isLocked) {
-      ASCIIart.clearConsole();
-      System.out.println("The door is locked.");
-      ASCIIart.okToContinue();
+      ConsoleUtil.cToClose("The door is locked.");
     } else {
       if (door.roomId1.equals(currentRoomId)) {
         currentRoomId = door.roomId2;
@@ -124,17 +135,18 @@ public class Controller {
   }
 
   private void selectItem(String id) {
-    ASCIIart.clearConsole();
+    ConsoleUtil.clear();
     player.printInventory(id);
-    System.out.println("[us]> use");
-    System.out.println("[dr]> drop");
-    System.out.println("[cl]> close");
+    System.out.println("[u]> use");
+    System.out.println("[d]> drop");
+    System.out.println("[c]> close");
     Scanner scan = new Scanner(System.in);
     String input = scan.nextLine();
     switch (input) {
       case "us" -> useItem(id);
       case "dr" -> dropItem(id);
     }
+    scan.close();
   }
 
   private void useItem(String id) {
