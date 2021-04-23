@@ -5,6 +5,12 @@ public class ASCIIart {
     // static class
   }
 
+  /**
+   * Replaces Specific Strings with colored Boxdrawing characters.
+   * @param asciiArt  the input String
+   * @param reset     ansi color-code of the standard wallcolor
+   * @return          the input String with replaced characters
+   */
   public static String colorDoors(String asciiArt, String reset) {
     asciiArt = asciiArt.replace("RRR", AnsiColors.RED + "═══" + reset);
     asciiArt = asciiArt.replace("R", AnsiColors.RED + "║" + reset);
@@ -27,6 +33,22 @@ public class ASCIIart {
     return asciiArt;
   }
 
+  /**
+   * Generates a simple 1x1 room with a possible single door at every wall.
+   * Every wall is described by either a color-code for a door or ---/| for a normal wall.
+   * Three characters will be replaced with a horizontal wall/door and a single
+   * character will be raplaced with a vertical wall/door.
+   * @param color     ansi color-code of the standard wallcolor
+   * @param up        character code of upper wall
+   * @param upDesc    description of upper wall
+   * @param left      character code of left wall
+   * @param leftDesc  description of left wall
+   * @param right     character code of right wall
+   * @param rightDesc description of right wall
+   * @param down      character code lower wall
+   * @param downDesc  description of lower wall
+   * @return
+   */
   public static String simpleRoom(String color, String up, String upDesc, String left, String leftDesc, String right, String rightDesc, String down, String downDesc) {
     String output = (
       color + "┌───" + up + "───┐\n" +
