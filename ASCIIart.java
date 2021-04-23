@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import boxdrawing.*;
+
 public class ASCIIart {
   private ASCIIart() {
     // static class
@@ -108,5 +110,20 @@ public class ASCIIart {
 
   public static String bigRoom(String up, String upDesc, String up2, String upDesc2, String left, String leftDesc, String left2, String leftDesc2, String right, String rightDesc, String right2, String rightDesc2, String down, String downDesc, String down2, String downDesc2) {
     return bigRoom(AnsiColors.WHITE, up, upDesc, up2, upDesc2, left, leftDesc, left2, leftDesc2, right, rightDesc, right2, rightDesc2, down, downDesc, down2, downDesc2);
+  }
+
+  public static void printHealth(int current, int max) {
+    System.out.println("[Health: " + current + "/" + max + "]");
+    String filled = AnsiColors.RED + Block.f + AnsiColors.RESET;
+    String empty = AnsiColors.BLACK_BRIGHT + Block.f + AnsiColors.RESET;
+    if (current == max) {
+      System.out.println(Box.repeat(filled, max));
+    } else if (current > 0) {
+      System.out.println(
+      Box.repeat(filled, current) + Box.repeat(empty, max-current));
+    } else {
+      System.out.println(Box.repeat(empty, max));
+    }
+    System.out.print("\n");
   }
 }
