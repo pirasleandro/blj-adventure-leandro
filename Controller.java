@@ -13,24 +13,27 @@ public class Controller {
   }
 
   public void printCurrentRoom() {
+    ASCIIart.printHealth(player.getHealth(), player.getMaxHealth());
     map.getRoom(currentRoomId).print();
   }
 
   public void getInput() {
     Scanner scan = new Scanner(System.in);
+    System.out.println("[0]> leave room");
     System.out.println("[1]> inspect room");
-    System.out.println("[2]> leave room");
-    System.out.println("[3]> show inventory");
+    System.out.println("[2]> show inventory");
     String input = scan.nextLine();
     switch (input) {
+      case "0" -> leaveRoom();
       case "1" -> inspectRoom();
-      case "2" -> leaveRoom();
-      case "3" -> showInventory();
+      case "2" -> showInventory();
+      case "/" -> Debug.open();
     }
   }
 
   private void leaveRoom() {
     ASCIIart.clearConsole();
+    
     printCurrentRoom();
     Scanner scan = new Scanner(System.in);
     ArrayList<String> awailableDoors = map.getDoorsOfRoom(currentRoomId);
@@ -104,9 +107,9 @@ public class Controller {
       System.out.println("The door is locked.");
       ASCIIart.okToContinue();
     } else {
-      if (door.roomId1 == currentRoomId) {
+      if (door.roomId1.equals(currentRoomId)) {
         currentRoomId = door.roomId2;
-      } else if (door.roomId2 == currentRoomId) {
+      } else if (door.roomId2.equals(currentRoomId)) {
         currentRoomId = door.roomId1;
       } else {
         System.out.println("The door you want to use is not in your current room.");
@@ -146,6 +149,10 @@ public class Controller {
 
   public String getCurrentRoom() {
     return currentRoomId;
+  }
+
+  public void setCurrentRoom(String id) {
+    currentRoomId = id;
   }
 
   public Player getPlayer() {
