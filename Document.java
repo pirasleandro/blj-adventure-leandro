@@ -12,6 +12,11 @@ public class Document extends Item {
   }
 
   @Override
+  void use() {
+    // TODO Auto-generated method stub
+  }
+
+  @Override
   void take() {
     // TODO Auto-generated method stub
     
@@ -22,5 +27,4 @@ public class Document extends Item {
     // TODO Auto-generated method stub
     
   }
-  
 }

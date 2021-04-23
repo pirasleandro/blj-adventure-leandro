@@ -13,6 +13,12 @@ public class Weapon extends Item {
   }
 
   @Override
+  void use() {
+    // TODO Auto-generated method stub
+    
+  }
+
+  @Override
   void take() {
     // TODO Auto-generated method stub
     

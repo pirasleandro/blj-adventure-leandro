@@ -2,20 +2,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Controller {
-  private Map map;
-  private Player player;
   private String currentRoomId;
   private static Scanner scan = new Scanner(System.in);
 
-  public Controller(Map map, Player player, String starterRoomId) {
-    this.map = map;
-    this.player = player;
-    this.currentRoomId = starterRoomId;
+  public Controller(String spawnerRoomId) {
+    this.currentRoomId = spawnerRoomId;
   }
 
   public void printCurrentRoom() {
-    ASCIIart.printHealth(player.getHealth(), player.getMaxHealth());
-    map.getRoom(currentRoomId).print();
+    ASCIIart.printHealth(Ref.player.getHealth(), Ref.player.getMaxHealth());
+    Ref.map.getRoom(currentRoomId).print();
   }
 
   public void getInput() {
@@ -35,9 +31,9 @@ public class Controller {
   private void leaveRoom() {
     ConsoleUtil.clear();
     printCurrentRoom();
-    ArrayList<String> awailableDoors = map.getDoorsOfRoom(currentRoomId);
+    ArrayList<String> awailableDoors = Ref.map.getDoorsOfRoom(currentRoomId);
     for (int i = 0; i < awailableDoors.size(); i++) {
-      System.out.println("[" + i + "]> " + map.getDoor(awailableDoors.get(i)).name);
+      System.out.println("[" + i + "]> " + Ref.map.getDoor(awailableDoors.get(i)).name);
     }
     if (awailableDoors.size() > 1) {
       System.out.println("[c]> close");
@@ -65,7 +61,7 @@ public class Controller {
   private void inspectRoom() {
     ConsoleUtil.clear();
     printCurrentRoom();
-    Room room = map.getRoom(currentRoomId);
+    Room room = Ref.map.getRoom(currentRoomId);
     ArrayList<String> items = room.getItems();
     for (String string : items) {
       System.out.println("[" + items.indexOf(string) + "]> " + room.getItem(string).getInfo());
@@ -91,9 +87,9 @@ public class Controller {
   private void showInventory() {
     ConsoleUtil.clear();
     printCurrentRoom();
-    ArrayList<Item> items = player.items;
-    player.printInventory();
-    if (player.itemCount() > 0) {
+    ArrayList<Item> items = Ref.player.items;
+    Ref.player.printInventory();
+    if (Ref.player.itemCount() > 0) {
       System.out.println("[c]> close");
       String input = scan.nextLine();
       if (input != "c") {
@@ -111,7 +107,7 @@ public class Controller {
   }
 
   private void useDoor(String id) {
-    Door door = map.getDoor(id);
+    Door door = Ref.map.getDoor(id);
     if (door.isLocked) {
       ConsoleUtil.cToClose("The door is locked.");
     } else {
@@ -126,14 +122,14 @@ public class Controller {
   }
 
   private void takeItem(String id) {
-    map.getRoom(currentRoomId).getItem(id).take();
-    player.items.add(map.getRoom(currentRoomId).getItem(id));
-    map.getRoom(currentRoomId).items.remove(map.getRoom(currentRoomId).getItem(id));
+    Ref.map.getRoom(currentRoomId).getItem(id).take();
+    Ref.player.items.add(Ref.map.getRoom(currentRoomId).getItem(id));
+    Ref.map.getRoom(currentRoomId).items.remove(Ref.map.getRoom(currentRoomId).getItem(id));
   }
 
   private void selectItem(String id) {
     ConsoleUtil.clear();
-    player.printInventory(id);
+    Ref.player.printInventory(id);
     System.out.println("[u]> use");
     System.out.println("[d]> drop");
     System.out.println("[c]> close");
@@ -146,13 +142,13 @@ public class Controller {
   }
 
   private void useItem(String id) {
-    player.getItem(id).use(currentRoomId);
+    Ref.player.getItem(id).use(currentRoomId);
   }
 
   private void dropItem(String id) {
-    player.getItem(id).drop();
-    map.getRoom(currentRoomId).items.add(player.getItem(id));
-    player.removeItem(id);
+    Ref.player.getItem(id).drop();
+    Ref.map.getRoom(currentRoomId).items.add(Ref.player.getItem(id));
+    Ref.player.removeItem(id);
   }
 
   public String getCurrentRoom() {
@@ -161,13 +157,5 @@ public class Controller {
 
   public void setCurrentRoom(String id) {
     currentRoomId = id;
-  }
-
-  public Player getPlayer() {
-    return player;
-  }
-
-  public Map getMap() {
-    return map;
   }
 }

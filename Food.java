@@ -8,7 +8,12 @@ public class Food extends Item {
 
   @Override
   void use(String currentRoomId) {
-    player.heal(heal);
+    use();
+  }
+
+  @Override
+  void use() {
+    Ref.player.heal(heal);
   }
 
   @Override

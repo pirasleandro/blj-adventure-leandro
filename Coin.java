@@ -11,6 +11,11 @@ public class Coin extends Item {
   }
 
   @Override
+  void use() {
+    ConsoleUtil.cToClose("This item can't be used.");
+  }
+
+  @Override
   void take() {
     ConsoleUtil.cToClose("You picked up a coin.");
   }

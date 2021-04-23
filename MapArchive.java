@@ -6,7 +6,7 @@ public class MapArchive {
 
   public static final Map TESTING_MAP = new Map(AnsiColors.WHITE,
     new Room[] {
-      new Room("starter_room", "Starter Room",
+      new Room("spawn_room", "Spawn Room",
       new Item[]{
         new Coin("coin", "Coin", "A shiny coin."),
         new Coin("coin2", "Coin", "A shiny coin."),
@@ -23,15 +23,15 @@ public class MapArchive {
       )
     },
     new Door[] {
-      new Door("start_second", "Blue Door", "starter_room", "second_room", false),
-      new Door("start_third", "Red Door", "starter_room", "third_room", false),
+      new Door("spawn_second", "Blue Door", "spawn_room", "second_room", false),
+      new Door("spawn_third", "Red Door", "spawn_room", "third_room", false),
       new Door("second_third", "Green Door", "second_room", "third_room", false)
     }
   );
 
   public static final Map LIGHT_CONTAINMENT = new Map(AnsiColors.WHITE,
     new Room[] {
-      new Room("starter_room", "Checkpoint", new Item[0], ASCIIart.bigRoom(AnsiColors.BLACK_BOLD_BRIGHT, "---", "   ", "---", "   ", "|", "   ", "|", "   ", "|", "   ", "|", "   ", "---", "   ", "---", "   "))
+      new Room("spawn_room", "Checkpoint", new Item[0], ASCIIart.bigRoom(AnsiColors.BLACK_BOLD_BRIGHT, "---", "   ", "---", "   ", "|", "   ", "|", "   ", "|", "   ", "|", "   ", "---", "   ", "---", "   "))
     },
     new Door[] {
 
@@ -40,7 +40,7 @@ public class MapArchive {
 
   public static final Map ENTRANCE_ZONE = new Map(AnsiColors.WHITE_BRIGHT,
     new Room[] {
-      new Room("starter_room", "Entrance", new Item[0],
+      new Room("spawn_room", "Entrance", new Item[0],
         ASCIIart.bigRoom("LLL","D01","LLL","D02","|","   ","|","   ","L","D03","|","   ","WWW","E01","WWW","E02")
       ),
       new Room("hallway_1", "Hallway", new Item[] {
@@ -88,9 +88,9 @@ public class MapArchive {
       )
     },
     new Door[] {
-      new Door("start_hallway_2", "D01", "starter_room", "hallway_2", false),
-      new Door("start_wc", "D02", "starter_room", "wc", false),
-      new Door("start_hallway_1", "D03", "starter_room", "hallway_1", false),
+      new Door("spawn_hallway_2", "D01", "spawn_room", "hallway_2", false),
+      new Door("spawn_wc", "D02", "spawn_room", "wc", false),
+      new Door("spawn_hallway_1", "D03", "spawn_room", "hallway_1", false),
       new Door("hallway_cafeteria_1", "D04", "hallway_1", "cafeteria", false),
       new Door("hallway_cafeteria_2", "D05", "hallway_1", "cafeteria", false),
       new Door("hallway_office_1", "D06", "hallway_1", "office_1", false),
@@ -101,8 +101,8 @@ public class MapArchive {
       new Door("hallway_security", "D11", "hallway_2", "security", true),
       new Door("checkpoint_end_1", "E03", "checkpoint", "end_room", true),
       new Door("checkpoint_end_2", "E04", "checkpoint", "end_room", true),
-      new Door("start_start_1", "E01", "starter_room", "start_room", true),
-      new Door("start_start_2", "E02", "starter_room", "start_room", true)
+      new Door("spawn_spawn_1", "E01", "spawn_room", "spawn_room", true),
+      new Door("spawn_spawn_2", "E02", "spawn_room", "spawn_room", true)
     },
     MapArchive.LIGHT_CONTAINMENT
   );

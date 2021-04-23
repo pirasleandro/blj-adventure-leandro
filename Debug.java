@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class Debug {
-  public static Controller controller;
   private static Scanner scan = new Scanner(System.in);
 
   private Debug() {
@@ -14,31 +13,30 @@ public class Debug {
     switch (input) {
       case "tp" -> {
         System.out.println("Enter room id: ");
-        controller.setCurrentRoom(scan.nextLine());
+        Ref.controller.setCurrentRoom(scan.nextLine());
       }
       case "open" -> {
         System.out.println("Enter door id:");
-        controller.getMap().getDoor(scan.nextLine()).isLocked = false;
+        Ref.map.getDoor(scan.nextLine()).isLocked = false;
       }
       case "heal" -> {
         System.out.println("Enter amount: ");
         input = scan.nextLine();
         if (input.equals("max")) {
-          controller.getPlayer().heal(controller.getPlayer().maxHealth);
+          Ref.player.heal(Ref.player.maxHealth);
         } else {
-          controller.getPlayer().heal(Integer.parseInt(input));
+          Ref.player.heal(Integer.parseInt(input));
         }
       }
       case "hurt" -> {
         System.out.println("Enter amount: ");
         input = scan.nextLine();
         if (input.equals("max")) {
-          controller.getPlayer().kill();
+          Ref.player.kill();
         } else {
-          controller.getPlayer().hurt(Integer.parseInt(input));
+          Ref.player.hurt(Integer.parseInt(input));
         }
       }
     }
-    ;
   }
 }
