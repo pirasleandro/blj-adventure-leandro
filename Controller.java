@@ -15,14 +15,14 @@ public class Controller {
   }
 
   public void getInput() {
-    System.out.println("[0]> leave room");
-    System.out.println("[1]> inspect room");
-    System.out.println("[2]> show inventory");
+    System.out.println("[l]> leave room");
+    System.out.println("[i]> inspect room");
+    System.out.println("[s]> show inventory");
     String input = scan.nextLine();
     switch (input) {
-      case "0" -> leaveRoom();
-      case "1" -> inspectRoom();
-      case "2" -> showInventory();
+      case "l" -> leaveRoom();
+      case "i" -> inspectRoom();
+      case "s" -> showInventory();
       case "/" -> Debug.open();
     }
     ;
