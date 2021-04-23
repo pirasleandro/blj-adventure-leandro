@@ -1,14 +1,10 @@
-import java.util.ArrayList;
-
-import boxdrawing.*;
-
 public class MapArchive {
 
   private MapArchive() {
     // static class
   }
 
-  public static final Map TESTING_MAP = new Map(
+  public static final Map TESTING_MAP = new Map(AnsiColors.WHITE,
     new Room[] {
       new Room("starter_room", "Starter Room",
       new Item[]{
@@ -33,16 +29,16 @@ public class MapArchive {
     }
   );
 
-  public static final Map LIGHT_CONTAINMENT = new Map(
+  public static final Map LIGHT_CONTAINMENT = new Map(AnsiColors.WHITE,
     new Room[] {
-      new Room("starter_room", "Checkpoint", new Item[0], ASCIIart.bigRoom(AnsiColors.BLACK_BRIGHT, "---", "   ", "---", "   ", "|", "   ", "|", "   ", "|", "   ", "|", "   ", "---", "   ", "---", "   "))
+      new Room("starter_room", "Checkpoint", new Item[0], ASCIIart.bigRoom(AnsiColors.BLACK_BOLD_BRIGHT, "---", "   ", "---", "   ", "|", "   ", "|", "   ", "|", "   ", "|", "   ", "---", "   ", "---", "   "))
     },
     new Door[] {
 
     }
   );
 
-  public static final Map ENTRANCE_ZONE = new Map(
+  public static final Map ENTRANCE_ZONE = new Map(AnsiColors.WHITE_BRIGHT,
     new Room[] {
       new Room("starter_room", "Entrance", new Item[0],
         ASCIIart.bigRoom("LLL","D01","LLL","D02","|","   ","|","   ","L","D03","|","   ","WWW","E01","WWW","E02")

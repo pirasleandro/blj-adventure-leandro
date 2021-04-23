@@ -1,8 +1,8 @@
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Map {
   public String id;
+  public String standardColor;
   public Room[] rooms;
   public Door[] doors;
   public Map nextStage;
@@ -14,19 +14,22 @@ public class Map {
   );
   private static final Door DEBUG_DOOR = new Door("debug_door", "Door not found.", "debug_room", "debug_room", false);
 
-  public Map(Room[] rooms, Door[] doors, Map nextStage) {
+  public Map(String standardColor, Room[] rooms, Door[] doors, Map nextStage) {
     this.rooms = rooms;
     this.doors = doors;
+    this.standardColor = standardColor;
     this.nextStage = nextStage;
   }
 
-  public Map(Room[] rooms, Door[] doors) {
+  public Map(String standardColor ,Room[] rooms, Door[] doors) {
+    this.standardColor = standardColor;
     this.rooms = rooms;
     this.doors = doors;
   }
 
   public Map(Map map) {
     this.id = map.id;
+    this.standardColor = map.standardColor;
     this.rooms = map.rooms;
     this.doors = map.doors;
     this.nextStage = map.nextStage;
