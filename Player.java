@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 public class Player {
   public String name;
-  public float maxHealth = 100;
-  private float health = maxHealth;
-  public float defense = 20;
+  public int maxHealth = 20;
+  private int health = maxHealth;
+  public float defense = 5;
   public ArrayList<Item> items = new ArrayList<Item>();
 
   public Player(String name) {
@@ -69,5 +69,13 @@ public class Player {
 
   public void kill() {
     health = 0;
+  }
+
+  public int getHealth() {
+    return health;
+  }
+
+  public int getMaxHealth() {
+    return maxHealth;
   }
 }
