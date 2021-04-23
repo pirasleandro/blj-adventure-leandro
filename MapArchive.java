@@ -15,12 +15,7 @@ public class MapArchive {
       new Room("second_room", "Second Room", new Item[0],
         ASCIIart.simpleRoom("---", "   ", "B", "   ", "|", "   ", "GGG", "   ")),
       new Room("third_room", "Third Room", new Item[0],
-        "┌───RRR────────GGG───┐\n" + 
-        "│                    │\n" +
-        "│                    │\n" +
-        "│                    │\n" +
-        "└────────────────────┘"
-      )
+        ASCIIart.hallwayHorizontal("RRR", "   ", "GGG", "   ", "|", "   ", "|", "   ", "---", "   ", "---", "   "))
     },
     new Door[] {
       new Door("spawn_second", "Blue Door", "spawn_room", "second_room", false),
