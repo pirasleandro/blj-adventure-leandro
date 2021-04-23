@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
-public class ConsoleUtil {
+public class ConsoleUI {
   private static Scanner scan = new Scanner(System.in);
 
-  private ConsoleUtil() {
+  private ConsoleUI() {
     // static class
   }
 
@@ -25,4 +25,3 @@ public class ConsoleUtil {
     System.out.println(message);
     cToClose();
   }
-}
