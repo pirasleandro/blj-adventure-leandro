@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Controller {
-  private String currentRoomId;
+  public String currentRoomId;
   private static Scanner scan = new Scanner(System.in);
 
   public Controller(String spawnerRoomId) {
