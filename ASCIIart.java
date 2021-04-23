@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 import boxdrawing.*;
 
 public class ASCIIart {
@@ -27,19 +25,6 @@ public class ASCIIart {
     asciiArt = asciiArt.replace("---", "───");
     asciiArt = asciiArt.replace("|", "│");
     return asciiArt;
-  }
-
-  public static void clearConsole() {
-    System.out.print("\033\143");
-  }
-
-  public static void okToContinue() {
-    System.out.println("[ok]> continue");
-    Scanner scan = new Scanner(System.in);
-    String ok = scan.nextLine();
-    while (!ok.equals("ok")) {
-      ok = scan.nextLine();
-    }
   }
 
   public static String simpleRoom(String color, String up, String upDesc, String left, String leftDesc, String right, String rightDesc, String down, String downDesc) {
