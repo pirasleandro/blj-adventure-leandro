@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class Controller {
   public String currentRoomId;
+  private String previousRoomId = "DEBUG_ROOM";
   private static Scanner scan = new Scanner(System.in);
 
   public Controller(String spawnerRoomId) {
@@ -11,11 +12,13 @@ public class Controller {
 
   public void getInput() {
     System.out.println("[l]> leave room");
+    System.out.println("[b]> back to previous room");
     System.out.println("[i]> inspect room");
     System.out.println("[s]> show inventory");
     String input = scan.nextLine();
     switch (input) {
       case "l" -> leaveRoom();
+      case "b" -> back();
       case "i" -> inspectRoom();
       case "s" -> showInventory();
       case "/" -> Debug.enterCommand();
@@ -53,6 +56,17 @@ public class Controller {
     ;
   }
 
+  private void back() {
+    ArrayList<String> awailableDoors = Ref.map.getIdsOfDoorsOfRoom(currentRoomId);
+    String tempDoor = "DEBUG_DOOR";
+    for (String doorId : awailableDoors) {
+      if (Ref.getDoor(doorId).roomId1.equals(previousRoomId) || Ref.getDoor(doorId).roomId2.equals(previousRoomId)) {
+        tempDoor = doorId;
+      }
+    }
+    useDoor(tempDoor);
+  }
+
   private void inspectRoom() {
     ConsoleUI.clear();
     ConsoleUI.printMainUI();
@@ -76,7 +90,6 @@ public class Controller {
     } catch (Exception e) {
       System.out.println("Incorrect input. Try again.");
     }
-    ;
   }
 
   private void showInventory() {
@@ -95,7 +108,6 @@ public class Controller {
           ConsoleUI.cToClose("Incorrect input. Try again.");
         }
       }
-      ;
     } else {
       ConsoleUI.cToClose();
     }
@@ -110,8 +122,10 @@ public class Controller {
       ConsoleUI.cToClose();
     } else {
       if (door.roomId1.equals(currentRoomId)) {
+        previousRoomId = currentRoomId;
         currentRoomId = door.roomId2;
       } else if (door.roomId2.equals(currentRoomId)) {
+        previousRoomId = currentRoomId;
         currentRoomId = door.roomId1;
       } else {
         System.out.println("The door you want to use is not in your current room.");
@@ -127,16 +141,16 @@ public class Controller {
 
   private void selectItem(String id) {
     ConsoleUI.clear();
+    ConsoleUI.printMainUI();
     Ref.player.printInventory(id);
     System.out.println("[u]> use");
     System.out.println("[d]> drop");
     System.out.println("[c]> close");
     String input = scan.nextLine();
     switch (input) {
-      case "us" -> useItem(id);
-      case "dr" -> dropItem(id);
+      case "u" -> useItem(id);
+      case "d" -> dropItem(id);
     }
-    ;
   }
 
   private void useItem(String id) {
@@ -154,6 +168,7 @@ public class Controller {
   }
 
   public void setCurrentRoom(String id) {
+    previousRoomId = currentRoomId;
     currentRoomId = id;
   }
 }

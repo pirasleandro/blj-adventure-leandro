@@ -11,26 +11,23 @@ public class Keycard extends Item {
     for (int i = 0; i < doorIds.length; i++) {
       Door door = Ref.getDoor(doorIds[i]);
       Room room = Ref.getRoom(currentRoomId);
-      if (door.roomId1 == room.id || door.roomId2 == room.id) {
+      if (door.roomId1.equals(room.id) || door.roomId2.equals(room.id)) {
         door.isLocked = !door.isLocked;
       }
     }
   }
 
-  @Override
   void use() {
     use(Ref.controller.currentRoomId);
   }
 
   @Override
   void take() {
-    // TODO Auto-generated method stub
-    
+    System.out.println("You picked up a keycard.");
   }
 
   @Override
   void drop() {
-    // TODO Auto-generated method stub
-    
+    System.out.println("You dropped the keycard.");
   }
 }
